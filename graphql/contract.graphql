@@ -1,0 +1,15 @@
+
+extend type Query {
+    contract(
+      id: ID @eq
+    ): Contract @find
+
+    contracts: [Contract!]! @paginate(defaultCount: 10)
+}
+
+type Contract {
+    id: ID!
+    amount: Float!
+    contractor: Contractor! @belongsTo
+    job: Job! @belongsTo
+}

@@ -1,0 +1,15 @@
+
+extend type Query {
+    job(
+      id: ID @eq
+    ): Job @find
+
+    jobs: [Job!]! @paginate(defaultCount: 10)
+}
+
+type Job {
+    id: ID!
+    location: Location! @belongsTo
+    customer: Customer! @belongsTo
+    skillsRequired: [Skill!] @belongsToMany
+}

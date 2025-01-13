@@ -1,0 +1,28 @@
+
+extend type Query {
+    contractor(
+      id: ID @eq
+    ): Contractor @find
+
+    contractors(
+      first_name: String @where(operator: "like")
+      last_name: String @where(operator: "like")
+    ): [Contractor!]! @paginate(defaultCount: 10)
+}
+
+type Contractor {
+    id: ID!
+    first_name: String!
+    last_name: String!
+    email: String!
+    phone: String
+    yoe: Int!
+    skills: [Skill!]! @belongsToMany
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type Skill {
+    id: ID!
+    name: String!
+}

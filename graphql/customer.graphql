@@ -1,0 +1,21 @@
+
+extend type Query {
+    customer(
+      id: ID @eq
+    ): Customer @find
+
+    customers(
+      first_name: String @where(operator: "like")
+      last_name: String @where(operator: "like")
+    ): [Customer!]! @paginate(defaultCount: 10)
+}
+
+type Customer {
+    id: ID!
+    first_name: String!
+    last_name: String!
+    email: String!
+    phone: String
+    created_at: DateTime!
+    updated_at: DateTime!
+}
