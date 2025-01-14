@@ -6,8 +6,6 @@ use App\Models\Contractor;
 use App\Models\Customer;
 use App\Models\Location;
 use App\Models\Skill;
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

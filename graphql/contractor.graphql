@@ -8,6 +8,15 @@ extend type Query {
       first_name: String @where(operator: "like")
       last_name: String @where(operator: "like")
     ): [Contractor!]! @paginate(defaultCount: 10)
+
+    searchContractors(
+      skill: [String!]
+    ): SearchContractorsResult
+}
+
+type SearchContractorsResult {
+  count: Int!
+  contractors: [Contractor!]
 }
 
 type Contractor {

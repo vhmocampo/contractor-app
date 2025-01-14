@@ -1,0 +1,16 @@
+{
+    "properties": {
+        "doc_type": {
+            "type": "text"
+        },
+        "description": {
+            "type": "keyword"
+        },
+        "yoe" : {
+            "type": "integer"
+        },
+        "skills": {
+            "type": "keyword"
+        }
+    }
+}
