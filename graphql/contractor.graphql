@@ -5,13 +5,26 @@ extend type Query {
     ): Contractor @find
 
     contractors(
-      first_name: String @where(operator: "like")
-      last_name: String @where(operator: "like")
+      first_name: String @where(operator: "like", ignoreNull: true)
+      last_name: String @where(operator: "like", ignoreNull: true)
+      phone: String @where(operator: "like", ignoreNull: true)
+      email: String @where(operator: "like", ignoreNull: true)
     ): [Contractor!]! @paginate(defaultCount: 10)
 
     searchContractors(
       skill: [String!]
     ): SearchContractorsResult
+}
+
+extend type Mutation {
+  upsertContractor (
+    id: ID
+    first_name: String!
+    last_name: String!
+    phone: String!
+    email: String!
+    yoe: Int
+  ): Contractor! @upsert
 }
 
 type SearchContractorsResult {
